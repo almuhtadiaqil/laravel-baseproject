@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Repositories\DummyModel;
+
+use App\Repositories\BaseRepositoryInterface;
+
+interface DummyModelInterface extends BaseRepositoryInterface
+{
+ // TODO: Add your own methods here
+}

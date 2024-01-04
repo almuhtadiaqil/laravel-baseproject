@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers\API\v1;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestPaginate;
+use App\Models\DummyModel;
+use App\Services\DummyModelService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class DummyModelController extends Controller
+{
+    /**
+     * @var DummyModelService $service
+     */
+    protected DummyModelService $service;
+
+    /**
+     * constructor function for DummyModelController
+     *
+     * @param DummyModelService $s
+     */
+    public function __construct(DummyModelService $s)
+    {
+        $this->service = $s;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param RequestPaginate $request
+     * @return JsonResponse
+     */
+    public function index(RequestPaginate $request): JsonResponse
+    {
+        return response()->json($this->service->getPagination($request));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request  $request
+     * @return  JsonResponse
+     */
+    public function store(Request $request): JsonResponse
+    {
+        return response()->json($this->service->store($request));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param DummyModel $request
+     * @return JsonResponse
+     */
+    public function show(DummyModel $request): JsonResponse
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @param  DummyModel  $model
+     * @return JsonResponse
+     */
+    public function update(Request $request, DummyModel $model):JsonResponse
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        //
+    }
+}
